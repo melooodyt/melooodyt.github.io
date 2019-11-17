@@ -9,10 +9,10 @@
 <body onload="loadQuestion()">
     <form name="myForm">
         <label id="myLabel">Question</label><br>
-        <input type="button" value="option1" name="opt1" onclick="checkAns(1)"><br>
-        <input type="button" value="option2" name="opt2" onclick="checkAns(2)"><br>
-        <input type="button" value="option3" name="opt3" onclick="checkAns(3)"><br>
-        <input type="button" value="option4" name="opt4" onclick="checkAns(4)"><br>
+        <input type="button" value="option1" name="opt1" onclick="checkAns(1);changeQuestion()"><br>
+        <input type="button" value="option2" name="opt2" onclick="checkAns(2);changeQuestion()"><br>
+        <input type="button" value="option3" name="opt3" onclick="checkAns(3);changeQuestion()"><br>
+        <input type="button" value="option4" name="opt4" onclick="checkAns(4);changeQuestion()"><br>
         <input type="button" value="Next" name="nxtbtn" onclick="changeQuestion()"><br>
 
     </form>
@@ -20,21 +20,27 @@
     <script type="text/javascript">
         i = 0;
         myQuestion = [
-            ["What does JS stand for?", "abc", "java script", "abc", "abc", "2"],
-            ["Where is the sky", "ground level", "north", "south", "east", "2"],
-            ["question", "opt", "opt", "opt", "opt", "1"]
+            ["What does JS stand for?", "opt1", "java script", "opt3", "opt4", "2"],
+            ["Question 2", "opt1", "opt2", "opt3", "opt4", "2"],
+            ["question 3", "opt01", "opt02", "opt03", "opt04", "1"]
         ];
 
         function loadQuestion() {
+            
+            //document.getElementById("myLabel").innerHTML = myQuestion[(i = 0; i < myQuestion.length; i ++)][0];
+
             document.getElementById("myLabel").innerHTML = myQuestion[0][0];
             myForm.opt1.value = myQuestion[i][1];
             myForm.opt2.value = myQuestion[i][2];
             myForm.opt3.value = myQuestion[i][3];
             myForm.opt4.value = myQuestion[i][4];
+                  
+            
         }
 
     function changeQuestion() {
         i = i + 1;
+    
             
         
             
@@ -44,7 +50,7 @@
 
     function checkAns(a) {
         Ans = parseInt(myQuestion[i][5]);
-        if (Ans == a) 
+        if (Ans === a) 
         {
             alert("Correct");
         }
@@ -52,7 +58,8 @@
         {
             alert("Wrong");
         }
-
+        
+        
         };
 
     </script>    
